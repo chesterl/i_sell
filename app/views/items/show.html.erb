@@ -7,7 +7,7 @@
 
 <p>
   <strong>Picture:</strong>
-  <%= @item.picture %>
+  <%= image_tag(@item.picture_url(:thumbnail), :width => 50, :height => 50) %>
 </p>
 
 <p>
@@ -35,5 +35,9 @@
   <%= @item.user %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
+<button type="button" class="btn btn-warning btn-lg">
+<%= link_to 'Edit', edit_item_path(@item) %>
+</button>
+<button type="button" class="btn btn-warning">
 <%= link_to 'Back', items_path %>
+</button>

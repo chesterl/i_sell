@@ -1,14 +1,28 @@
-<div class="jumbotron">
-  <h1>iSell</h1>
-  <h3>Where people come to buy stuff</h3>
-  <!-- <button type="button" class="btn btn-primary">Sign Up</button>
-  <button type="button" class="btn btn-info">Sign In</button> -->
+<%if user_signed_in?%>
+  <div class="jumbotron">
+    <h1> Welcome to i_sell.</h1>
+      <p> My name is Kelpie and I am here to help you shop!!</p>
+    <img src="<%= image_path('dog-650299.jpg') %>" height="200" width="500" />
+  </div>
+<% else %>
+  <div class="jumbotron">
+    <h1>iSell</h1>
+    <h3>Where people come to buy stuff</h3>
+    <!-- <button type="button" class="btn btn-primary">Sign Up</button>
+    <button type="button" class="btn btn-info">Sign In</button> -->
 
-  <!-- Add Links that look like buttons via bootstrap classes -->
-  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
-  <%= link_to "Sign In", new_user_session_path, class: "btn btn-info" %>
+    <!-- Add Links that look like buttons via bootstrap classes -->
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+    <%= link_to "Sign In", new_user_session_path, class: "btn btn-info" %>
+  </div>
+<% end %>
 
-</div>
+
+
+
+
+
+
 
 <!-- Homework -->
 <!-- Add an About/Contact me page that can be linked through navbar -->

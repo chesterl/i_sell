@@ -30,6 +30,31 @@
     <%= f.file_field :picture %>
   </div>
 
+  <div class="field">
+    <%= f.label :street %>
+    <%= f.text_field :street %>
+  </div>
+
+  <div class="field">
+    <%= f.label :suburb %>
+    <%= f.text_field :suburb %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %>
+    <%= f.select(:state, ['NSW', 'QLD', 'SA', 'VIC', 'NT', 'WA', 'ACT']) %>
+    </div>
+
+  <div class="field">
+    <%= f.label :country %>
+    <%= f.select(:country,['Australia']) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

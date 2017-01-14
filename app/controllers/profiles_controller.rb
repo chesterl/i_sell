@@ -22,16 +22,39 @@ class ProfilesController < ApplicationController
     @profile = Profile.all
   end
 
+
+  def edit
+    @profile = Profile.find(params[:id])
+  end
+
+  def update
+    @profile = Profile.find(params[:id])
+    respond_to do |format|
+      if @profile.update(profile_params)
+        format.html { redirect_to @profile, notice: 'profile was successfully updated.' }
+        format.json { render :show, status: :ok, location: @profile }
+      else
+        format.html { render :edit }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /profile/1
   # GET /profile/1.json
   def show
-    @profile = current_user.profile
+    @profiles = current_user.profile
+    @hash = Gmaps4rails.build_markers(@profiles) do |profile, marker|
+      marker.lat profile.latitude
+      marker.lng profile.longitude
+      marker.infowindow profile.first_name
+    end
   end
 
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :biography, :picture)
+    params.require(:profile).permit(:first_name, :last_name, :biography, :picture, :street, :state, :suburb, :postcode, :country)
   end
 
 end

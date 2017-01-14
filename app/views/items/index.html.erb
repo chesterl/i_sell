@@ -2,7 +2,23 @@
 
 <h1>Items</h1>
 
-<table>
+<div class="row">
+  <% @items.each do |item| %>
+    <div class="box col-lg-3 col-md-4 col-sm-2">
+      <div class="box panel panel-default">
+        <div class="panel-body">
+          <%= link_to item_path(item) do %>
+            <%= image_tag(item.picture_url, class:'img-responsive') %>
+          <% end %>
+          <br>
+          <h4 class="name"> Name: <%= item.name %> </h4>
+          <h5> Price <%= item.price %> </h5>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<!-- <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -30,7 +46,7 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
 <br>
 <% if current_user.has_role? :seller %>

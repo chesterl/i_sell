@@ -1,2 +1,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  background-image: url(/assets/wallpaper.jpg);
+  background-position: top;
+  background-size: cover;
+  // background-color: blue;
+}
+
+.box {
+  background-color: #ADD8E6;
+  // margin: 2px;
+}
+
+.name {
+  font-style: italic;
+}
