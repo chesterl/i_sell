@@ -35,9 +35,12 @@
   <%= @item.user %>
 </p>
 
-<button type="button" class="btn btn-warning btn-lg">
-<%= link_to 'Edit', edit_item_path(@item) %>
-</button>
+<% if can? :manage, @item %>
+  <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-warning btn-lg" %>
+<% end %>
+
+<%= link_to "Buy", orders_path(item_id: @item), method: :post, class: "btn btn-info" %>
+
 <button type="button" class="btn btn-warning">
 <%= link_to 'Back', items_path %>
 </button>

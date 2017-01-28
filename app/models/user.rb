@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
   has_one :profile
 
+  # Need to declare explicit relationship on join table
+  has_many :purchases, class_name: "Order", foreign_key: "buyer_id"
+  has_many :sales, class_name: "Order", foreign_key: "seller_id"
+
   #after user is created perform this particular action/method
   after_create :assign_role
 
