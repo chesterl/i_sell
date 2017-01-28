@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     @order = current_user.purchases.build(seller: @item.user, item: @item)
 
     respond_to do |format|
-      if @order.save
+      if @item.sell! && @order.save  
         format.html { redirect_to @item, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

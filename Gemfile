@@ -69,3 +69,6 @@ gem "devise"
 
 # Add Simple form which overrides rails forms
 gem 'simple_form'
+
+# Add states (for items)
+gem 'aasm'

@@ -3,3 +3,19 @@ Add Buy, Sell links in navbar
   - Buy --> Item Index
   - Sell --> Item New
 Allow user to "become a seller" after signup
+
+--------------------------------------
+Jan 28th, 2017
+
+- Restrict item show for buyer + seller only after sold
+- Add simple item validations for content and dates (e.g. dates within 30 days)
+- Remove posted date
+- Orders - show appropriate buyer/seller names and style table
+- Change leaving feedback URLs to "/feedback"
+hint: get '/patients/:id', to: 'patients#show', as: 'patient'
+- Implement expired state
+- Adding multiple photos for item
+- Turning a buyer into seller and vice versa
+(How to add roles after user is created - check rolify docs)
+
+http://guides.rubyonrails.org/routing.html
