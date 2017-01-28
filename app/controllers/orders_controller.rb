@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = load_orders
   end
 
   # GET /orders/1
@@ -75,5 +75,13 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:feedback_rating, :feedback_comment, :item_id)
+    end
+
+    def load_orders
+      if current_user.has_role? :seller
+        current_user.sales
+      else
+        current_user.purchases
+      end
     end
 end

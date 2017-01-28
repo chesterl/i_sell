@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    # Only return items that are not expired
+    @items = Item.where("expiry_date > ?", DateTime.now)
   end
 
   # GET /items/1
