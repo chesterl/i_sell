@@ -17,7 +17,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @item.price %>
+  <%= number_to_currency(@item.price) %>
 </p>
 
 <p>
@@ -31,15 +31,20 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @item.user %>
+  <strong>Seller:</strong>
+  <%= @item.user.email %>
 </p>
 
 <% if can? :manage, @item %>
   <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-warning btn-lg" %>
 <% end %>
 
-<%= link_to "Buy", orders_path(item_id: @item), method: :post, class: "btn btn-info" %>
+<%= simple_form_for(@order) do |f| %>
+  <%= f.hidden_field :item_id, value: @item.id %>
+  <div class="form-actions">
+    <%= f.submit "Buy", class: "btn btn-info" %>
+  </div>
+<% end %>
 
 <button type="button" class="btn btn-warning">
 <%= link_to 'Back', items_path %>
