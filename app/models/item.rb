@@ -16,4 +16,9 @@ class Item < ApplicationRecord
 
   mount_uploader :picture, ProfilePictureUploader
 
+  # Class method for searching items by name or description
+  def self.search(params)
+    where("name LIKE ? OR description LIKE ?", "%#{params}%", "%#{params}%")
+  end
+
 end

@@ -4,8 +4,18 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    # Only return items that are not expired
-    @items = Item.where("expiry_date > ?", DateTime.now)
+
+    # If search params present, search for those items
+    if params[:search].present?
+      # Refactored search method
+      @items = Item.search(params[:search])
+      # Original search method refactored into Item model
+      # @items = Item.where("name LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      # Only return items that are not expired
+      @items = Item.active.where("expiry_date > ?", DateTime.now)
+    end
+
   end
 
   # GET /items/1
