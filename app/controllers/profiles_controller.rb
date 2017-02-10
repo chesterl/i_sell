@@ -44,7 +44,7 @@ class ProfilesController < ApplicationController
   # GET /profile/1.json
   def show
     @profile = current_user.profile
-    @hash = Gmaps4rails.build_markers(@profiles) do |profile, marker|
+    @hash = Gmaps4rails.build_markers(@profile) do |profile, marker|
       marker.lat profile.latitude
       marker.lng profile.longitude
       marker.infowindow profile.first_name
