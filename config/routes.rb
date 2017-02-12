@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :visitors
   # resources :orders, except: [:index, :show]
   resources :items
   resources :profiles
