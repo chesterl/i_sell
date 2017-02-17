@@ -72,3 +72,6 @@ gem 'simple_form'
 
 # Add states (for items)
 gem 'aasm'
+
+# Stripe payments
+gem 'stripe'

@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     @order = current_user.purchases.build(seller: @item.user, item: @item)
 
     respond_to do |format|
-      if @item.sell! && @order.save  
+      if @item.sell! && @order.save
         format.html { redirect_to @item, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -79,9 +79,9 @@ class OrdersController < ApplicationController
 
     def load_orders
       if current_user.has_role? :seller
-        current_user.sales
+        current_user.sales.includes(:item)
       else
-        current_user.purchases
+        current_user.purchases.includes(:item)
       end
     end
 end

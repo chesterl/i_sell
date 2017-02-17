@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get "orders", to: "orders#index"
   get "/orders/:id", to: "orders#show", as: "order"
   get "/feedback/:id/edit", to: "orders#edit", as: "edit_order"
+  post "orders", to: "orders#create"
   # edit_order_path
+  resources :payments
 
 
 
