@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/orders/:id", to: "orders#show", as: "order"
   get "/feedback/:id/edit", to: "orders#edit", as: "edit_order"
   # edit_order_path
+  resources :charges
 
 
 
